@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .item {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    img, video, iframe {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📸🎬 La mia galleria</h1>
+
+    <!-- Foto -->
+    <div class="item">
+      <h2>Foto 1</h2>
+      <img src="foto1.jpg" alt="Foto esempio">
+    </div>
+
+    <!-- Foto -->
+    <div class="item">
+      <h2>Foto 2</h2>
+      <img src="foto2.jpg" alt="Foto esempio">
+    </div>
+
+    <!-- Video locale -->
+    <div class="item">
+      <h2>Video locale</h2>
+      <video controls>
+        <source src="video1.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+
+    <!-- Video incorporato da YouTube -->
+    <div class="item">
+      <h2>Video da YouTube</h2>
+      <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+</body>
+</html>
