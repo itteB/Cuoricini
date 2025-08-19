@@ -13,10 +13,10 @@
       color: #333;
       line-height: 1.6;
       text-align: center; 
-      scroll-behavior: smooth; /* scorrimento dolce */
+      scroll-behavior: smooth;
     }
 
-    /* --- INTRO --- */
+    /* INTRO */
     .intro {
       height: 100vh;
       display: flex;
@@ -28,16 +28,8 @@
       padding: 20px;
     }
 
-    .intro h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    .intro p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-
+    .intro h1 { font-size: 2.5em; margin-bottom: 20px; }
+    .intro p { font-size: 1.2em; margin-bottom: 40px; }
     .intro button {
       padding: 12px 25px;
       font-size: 1.2em;
@@ -48,13 +40,12 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
     .intro button:hover {
       background: #9b154a;
       transform: scale(1.05);
     }
 
-    /* --- GALLERIA --- */
+    /* GALLERIA */
     .container {
       max-width: 800px;
       margin: auto;
@@ -66,7 +57,6 @@
       font-size: 2.5em;
       color: #c2185b;
       text-align: center;
-      word-wrap: break-word;
     }
 
     .item {
@@ -82,36 +72,39 @@
       filter: drop-shadow(0 6px 15px rgba(0,0,0,0.25));
     }
 
+    h2 {
+      margin-bottom: 15px;
+      color: #444;
+      font-size: 1.5em;
+    }
+
     img, video {
       max-width: 100%;
       border-radius: 12px;
     }
 
-    h2 {
-      margin-bottom: 15px;
-      color: #444;
-      font-size: 1.5em;
-      text-align: center;
-      word-wrap: break-word;
+    /* layout per media multipli */
+    .media-group {
+      display: grid;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .two-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .three-columns {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @media (max-width: 600px) {
-      .intro h1 {
-        font-size: 2em;
-      }
-      .intro p {
-        font-size: 1em;
-      }
-      h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
-      }
-      h2 {
-        font-size: 1.2em;
-      }
-      .item {
-        margin: 40px 0;
-      }
+      .intro h1 { font-size: 2em; }
+      .intro p { font-size: 1em; }
+      h1 { font-size: 1.8em; margin-bottom: 30px; }
+      h2 { font-size: 1.2em; }
+      .item { margin: 40px 0; }
+      .two-columns, .three-columns { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -126,69 +119,45 @@
 
   <!-- GALLERIA -->
   <div id="galleria" class="container">
+    
     <div class="item">
       <h2>Quando cresciamo insieme</h2>
-      <img src="18.jpg" alt="Foto esempio">
+      <div class="media-group two-columns">
+        <img src="matura.jpg" alt="Foto esempio">
+        <img src="18.jpg" alt="Foto esempio">
+      </div>
     </div>
 
     <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="bimba.jpg" alt="Foto esempio">
+      <h2>Quando ti fai carina</h2>
+      <div class="media-group two-columns">
+        <img src="tifaicarina.jpg" alt="Foto esempio">
+        <video controls>
+          <source src="carina.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
 
     <div class="item">
-      <h2>Quando cresciamo insieme</h2>
+      <h2>Quando viaggiamo insieme</h2>
+      <div class="media-group three-columns">
+        <img src="torino.jpg" alt="Foto esempio">
+        <img src="venice.jpg" alt="Foto esempio">
+        <video controls>
+          <source src="pontefirenze.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="item">
+      <h2>Quando coccoli i miei gatti</h2>
       <img src="gatti.jpg" alt="Foto esempio">
-    </div>
-
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="letto.jpg" alt="Foto esempio">
-    </div>
-
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="matura.jpg" alt="Foto esempio">
-    </div>
-
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="miportiingiro.jpg" alt="Foto esempio">
-    </div>
-
-    <div class="item">
-      <h2>Quando torni bambina</h2>
-      <img src="mordi.jpg" alt="Foto esempio">
-    </div>
-    
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="supporti.jpg" alt="Foto esempio">
-    </div>
-
-    
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="tifaicarina.jpg" alt="Foto esempio">
-    </div>
-
-    
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="torino.jpg" alt="Foto esempio">
-    </div>
-
-    
-    <div class="item">
-      <h2>Quando cresciamo insieme</h2>
-      <img src="venice.jpg" alt="Foto esempio">
     </div>
 
     <div class="item">
       <h2>Un ricordo in bici 🚴‍♀️</h2>
       <video controls>
         <source src="bici.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
       </video>
     </div>
 
@@ -196,7 +165,6 @@
       <h2>Quel momento speciale 💕</h2>
       <video controls>
         <source src="editSola.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
       </video>
     </div>
 
@@ -204,47 +172,23 @@
       <h2>Le nostre risate con le torte 🎂</h2>
       <video controls>
         <source src="torte.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
       </video>
     </div>
-  </div>
+
     <div class="item">
-      <h2>Le nostre risate con le torte 🎂</h2>
+      <h2>Quando mi dai la buonanotte</h2>
       <video controls>
         <source src="buonanotte.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
       </video>
     </div>
-  </div>
 
-  
     <div class="item">
-      <h2>Le nostre risate con le torte 🎂</h2>
-      <video controls>
-        <source src="carina.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
-      </video>
-    </div>
-  </div>
-
-  
-    <div class="item">
-      <h2>Le nostre risate con le torte 🎂</h2>
+      <h2>Quando mi (mal)tratti 😅</h2>
       <video controls>
         <source src="Mal tratti.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
       </video>
     </div>
-  </div>
 
-  
-    <div class="item">
-      <h2>Le nostre risate con le torte 🎂</h2>
-      <video controls>
-        <source src="pontefirenze.mp4" type="video/mp4">
-        Il tuo browser non supporta il video.
-      </video>
-    </div>
   </div>
 
   <script>
