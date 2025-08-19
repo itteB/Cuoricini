@@ -3,86 +3,265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galleria</title>
+  <title>La Nostra Galleria 💖</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Georgia", serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
+      background: #ffccea;
+      color: #333;
+      line-height: 1.6;
+      text-align: center; 
+      scroll-behavior: smooth; /* scorrimento dolce */
     }
+
+    /* --- INTRO --- */
+    .intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffccea, #ff99cc);
+      color: #c2185b;
+      padding: 20px;
+    }
+
+    .intro h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
+    .intro button {
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background: #c2185b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .intro button:hover {
+      background: #9b154a;
+      transform: scale(1.05);
+    }
+
+    /* --- GALLERIA --- */
     .container {
       max-width: 800px;
       margin: auto;
-      padding: 20px;
+      padding: 30px 20px;
     }
+
     h1 {
+      margin-bottom: 50px;
+      font-size: 2.5em;
+      color: #c2185b;
       text-align: center;
-      margin-bottom: 30px;
+      word-wrap: break-word;
     }
+
     .item {
-      margin-bottom: 40px;
-      text-align: center;
+      margin: 60px 0;
+      opacity: 0.5;
+      transform: scale(0.95);
+      transition: all 0.6s ease-in-out;
     }
-    img, video, iframe {
+
+    .item.active {
+      opacity: 1;
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 15px rgba(0,0,0,0.25));
+    }
+
+    img, video {
       max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 12px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #444;
+      font-size: 1.5em;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    @media (max-width: 600px) {
+      .intro h1 {
+        font-size: 2em;
+      }
+      .intro p {
+        font-size: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      .item {
+        margin: 40px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📸🎬 La mia galleria</h1>
 
-    <!-- Foto -->
+  <!-- INTRO -->
+  <div class="intro">
+    <h1>🎉 Buon Compleanno Amore 🎉</h1>
+    <p>21 anni di sorrisi, ricordi e amore... questo è tutto per te 💖</p>
+    <button onclick="document.getElementById('galleria').scrollIntoView()">Entra nella galleria 📸</button>
+  </div>
+
+  <!-- GALLERIA -->
+  <div id="galleria" class="container">
     <div class="item">
-      <h2>Foto 1</h2>
+      <h2>Quando cresciamo insieme</h2>
       <img src="18.jpg" alt="Foto esempio">
     </div>
 
-    <!-- Foto -->
     <div class="item">
-      <h2>Foto 2</h2>
+      <h2>Quando cresciamo insieme</h2>
       <img src="bimba.jpg" alt="Foto esempio">
     </div>
 
-    <!-- Video locale -->
     <div class="item">
-      <h2>Video locale</h2>
+      <h2>Quando cresciamo insieme</h2>
+      <img src="gatti.jpg" alt="Foto esempio">
+    </div>
+
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="letto.jpg" alt="Foto esempio">
+    </div>
+
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="matura.jpg" alt="Foto esempio">
+    </div>
+
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="miportiingiro.jpg" alt="Foto esempio">
+    </div>
+
+    <div class="item">
+      <h2>Quando torni bambina</h2>
+      <img src="mordi.jpg" alt="Foto esempio">
+    </div>
+    
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="supporti.jpg" alt="Foto esempio">
+    </div>
+
+    
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="tifaicarina.jpg" alt="Foto esempio">
+    </div>
+
+    
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="torino.jpg" alt="Foto esempio">
+    </div>
+
+    
+    <div class="item">
+      <h2>Quando cresciamo insieme</h2>
+      <img src="venice.jpg" alt="Foto esempio">
+    </div>
+
+    <div class="item">
+      <h2>Un ricordo in bici 🚴‍♀️</h2>
       <video controls>
         <source src="bici.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
       </video>
     </div>
 
-    <!-- Video locale -->
     <div class="item">
-      <h2>Video locale</h2>
+      <h2>Quel momento speciale 💕</h2>
       <video controls>
         <source src="editSola.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
       </video>
     </div>
 
-    <!-- Video locale -->
     <div class="item">
-      <h2>Video locale</h2>
+      <h2>Le nostre risate con le torte 🎂</h2>
       <video controls>
         <source src="torte.mp4" type="video/mp4">
         Il tuo browser non supporta il video.
       </video>
     </div>
-
-    <!-- Video incorporato da YouTube -->
-    <div class="item">
-      <h2>Video da YouTube</h2>
-      <iframe width="560" height="315" 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              frameborder="0" allowfullscreen>
-      </iframe>
-    </div>
-
   </div>
+    <div class="item">
+      <h2>Le nostre risate con le torte 🎂</h2>
+      <video controls>
+        <source src="buonanotte.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  </div>
+
+  
+    <div class="item">
+      <h2>Le nostre risate con le torte 🎂</h2>
+      <video controls>
+        <source src="carina.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  </div>
+
+  
+    <div class="item">
+      <h2>Le nostre risate con le torte 🎂</h2>
+      <video controls>
+        <source src="Mal tratti.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  </div>
+
+  
+    <div class="item">
+      <h2>Le nostre risate con le torte 🎂</h2>
+      <video controls>
+        <source src="pontefirenze.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, { threshold: 0.6 });
+
+    items.forEach(item => observer.observe(item));
+  </script>
+
 </body>
 </html>
