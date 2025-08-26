@@ -14,6 +14,18 @@
       line-height: 1.6;
       text-align: center; 
       scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* CANVAS FUOCHI */
+    #fuochi {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
     }
 
     /* INTRO */
@@ -83,20 +95,14 @@
       border-radius: 12px;
     }
 
-    /* layout per media multipli */
     .media-group {
       display: grid;
       gap: 15px;
       margin-top: 15px;
     }
 
-    .two-columns {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .three-columns {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    .two-columns { grid-template-columns: repeat(2, 1fr); }
+    .three-columns { grid-template-columns: repeat(3, 1fr); }
 
     @media (max-width: 600px) {
       .intro h1 { font-size: 2em; }
@@ -110,16 +116,21 @@
 </head>
 <body>
 
+  <!-- CANVAS FUOCHI -->
+  <canvas id="fuochi"></canvas>
+
   <!-- INTRO -->
   <div class="intro">
     <h1>🎉 Buon Compleanno Amore 🎉</h1>
-    <p>21 anni di sorrisi, ricordi e amore... questo è tutto per te 💖</p>
+    <p>+21 anni alla mia piccina!! 💖</p>
+    <br><br><br><br>
+    Premi per vedere quando ti amo!
     <button onclick="document.getElementById('galleria').scrollIntoView()">Entra nella galleria 📸</button>
   </div>
 
   <!-- GALLERIA -->
   <div id="galleria" class="container">
-    
+    <h1>Ti amo...</h1>
     <div class="item">
       <h2>Quando cresciamo insieme</h2>
       <div class="media-group two-columns">
@@ -127,7 +138,6 @@
         <img src="18.jpg" alt="Foto esempio">
       </div>
     </div>
-
     <div class="item">
       <h2>Quando ti fai carina</h2>
       <div class="media-group two-columns">
@@ -137,7 +147,6 @@
         </video>
       </div>
     </div>
-
     <div class="item">
       <h2>Quando viaggiamo insieme</h2>
       <div class="media-group three-columns">
@@ -148,52 +157,44 @@
         </video>
       </div>
     </div>
-
     <div class="item">
       <h2>Quando coccoli i miei gatti</h2>
       <img src="gatti.jpg" alt="Foto esempio">
     </div>
-
     <div class="item">
-      <h2>Un ricordo in bici 🚴‍♀️</h2>
+      <h2>Quando usciamo in bici 🚴‍♀️</h2>
       <video controls>
         <source src="bici.mp4" type="video/mp4">
       </video>
     </div>
-
     <div class="item">
-      <h2>Quel momento speciale 💕</h2>
+      <h2>Quando mi fai sentire speciale 💕</h2>
       <video controls>
         <source src="editSola.mp4" type="video/mp4">
       </video>
     </div>
-
     <div class="item">
       <h2>Le nostre risate con le torte 🎂</h2>
       <video controls>
         <source src="torte.mp4" type="video/mp4">
       </video>
     </div>
-
     <div class="item">
       <h2>Quando mi dai la buonanotte</h2>
       <video controls>
         <source src="buonanotte.mp4" type="video/mp4">
       </video>
     </div>
-
     <div class="item">
       <h2>Quando mi (mal)tratti 😅</h2>
       <video controls>
         <source src="Mal tratti.mp4" type="video/mp4">
       </video>
     </div>
-
   </div>
 
   <script>
     const items = document.querySelectorAll('.item');
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -203,9 +204,84 @@
         }
       });
     }, { threshold: 0.6 });
-
     items.forEach(item => observer.observe(item));
-  </script>
 
+    // ---- FUOCHI D'ARTIFICIO ----
+    const canvas = document.getElementById("fuochi");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let animation;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = Math.random() * 5 + 2;
+        this.speedX = (Math.random() - 0.5) * 6;
+        this.speedY = (Math.random() - 0.5) * 6;
+        this.life = 100;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life--;
+        this.size *= 0.95;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function createExplosion(x, y, count = 50) {
+      const colors = ["#ff4081", "#ffeb3b", "#40c4ff", "#69f0ae", "#ff5722"];
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+        if (p.life <= 0) particles.splice(i, 1);
+      });
+      animation = requestAnimationFrame(animate);
+    }
+
+    // ---- FUOCHI ALL'INIZIO ----
+    window.addEventListener('load', () => {
+      // tante esplosioni iniziali
+      for(let i=0; i<20; i++){
+        createExplosion(Math.random() * canvas.width, Math.random() * canvas.height / 2, 80);
+      }
+      animate();
+    });
+
+    // ---- FUOCHI ALLO SCROLL ----
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      // genera fuochi solo se scrolli verso il basso o su
+      if (currentScrollY !== lastScrollY) {
+        const x = Math.random() * window.innerWidth;
+        const y = window.innerHeight / 2 + (Math.random() - 0.5) * 200; // centro + piccola variazione
+        createExplosion(x, y, 20); 
+      }
+      lastScrollY = currentScrollY;
+    });
+  </script>
 </body>
 </html>
